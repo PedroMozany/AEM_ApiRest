@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="com.adobe.aem.guides.wknd.core.controller.ClientControllerImpl" immediate="true">
+  <service>
+    <provide interface="com.adobe.aem.guides.wknd.core.controller.ClientController"/>
+  </service>
+  <reference name="clientService" interface="com.adobe.aem.guides.wknd.core.service.ClientService" field="clientService"/>
+  <implementation class="com.adobe.aem.guides.wknd.core.controller.ClientControllerImpl"/>
+</scr:component>

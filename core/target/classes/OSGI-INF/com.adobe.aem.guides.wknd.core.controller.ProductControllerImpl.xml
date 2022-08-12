@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="com.adobe.aem.guides.wknd.core.controller.ProductControllerImpl" immediate="true">
+  <service>
+    <provide interface="com.adobe.aem.guides.wknd.core.controller.ProductController"/>
+  </service>
+  <reference name="productService" interface="com.adobe.aem.guides.wknd.core.service.ProductService" field="productService"/>
+  <implementation class="com.adobe.aem.guides.wknd.core.controller.ProductControllerImpl"/>
+</scr:component>

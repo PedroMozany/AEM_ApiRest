@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="com.adobe.aem.guides.wknd.core.servlets.ClientServlet">
+  <property name="service.description" type="String" value="Simple Demo Servlet"/>
+  <property name="sling.servlet.methods" type="String">GET
+POST
+PUT
+DELETE</property>
+  <property name="sling.servlet.paths" type="String" value="/bin/client"/>
+  <property name="sling.servlet.extensions" type="String" value="json"/>
+  <service>
+    <provide interface="javax.servlet.Servlet"/>
+  </service>
+  <reference name="clientController" interface="com.adobe.aem.guides.wknd.core.controller.ClientController" field="clientController"/>
+  <implementation class="com.adobe.aem.guides.wknd.core.servlets.ClientServlet"/>
+</scr:component>
