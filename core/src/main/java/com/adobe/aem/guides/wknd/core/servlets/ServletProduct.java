@@ -16,6 +16,9 @@
 package com.adobe.aem.guides.wknd.core.servlets;
 
 import com.adobe.aem.guides.wknd.core.controller.ProductController;
+import com.adobe.aem.guides.wknd.core.exceptions.ExceptionsParamenter;
+import com.adobe.aem.guides.wknd.core.models.DtoStatus;
+import com.google.gson.Gson;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
@@ -56,24 +59,55 @@ public class ServletProduct extends SlingAllMethodsServlet {
 
     @Override
     protected void doGet(final SlingHttpServletRequest request, final SlingHttpServletResponse response) throws ServletException, IOException {
-        String product = productController.searchParamenters(request, response);
-        response.setContentType("application/json");
-        response.getWriter().write(product);
+
+        try {
+            String  product = productController.searchParamenters(request, response);
+            response.setContentType("application/json");
+            response.getWriter().write(product);
+        }catch (ExceptionsParamenter e) {
+            response.setContentType("application/json");
+            response.setStatus(500);
+            response.getWriter().write(new Gson().toJson(new DtoStatus(response.getStatus(), e.getMessage())));
+        }
     }
 
     @Override
     protected void doPost(final SlingHttpServletRequest request, final SlingHttpServletResponse response) throws ServletException, IOException {
-        productController.save(request, response);
+        try {
+            productController.save(request, response);
+            response.setContentType("application/json");
+            response.getWriter().write(new Gson().toJson(new DtoStatus(response.getStatus(), "Successful")));
+        } catch (ExceptionsParamenter e) {
+            response.setContentType("application/json");
+            response.setStatus(500);
+            response.getWriter().write(new Gson().toJson(new DtoStatus(response.getStatus(), e.getMessage())));
+        }
     }
 
     @Override
     protected void doPut(final SlingHttpServletRequest request, final SlingHttpServletResponse response) throws ServletException, IOException {
-        productController.update(request, response);
+        try {
+            productController.update(request, response);
+            response.setContentType("application/json");
+            response.getWriter().write(new Gson().toJson(new DtoStatus(response.getStatus(), "Successful")));
+        } catch (ExceptionsParamenter e) {
+            response.setContentType("application/json");
+            response.setStatus(500);
+            response.getWriter().write(new Gson().toJson(new DtoStatus(response.getStatus(), e.getMessage())));
+        }
     }
 
     @Override
     protected void doDelete(final SlingHttpServletRequest request, final SlingHttpServletResponse response) throws ServletException, IOException {
-        productController.delete(request, response);
+        try {
+            productController.delete(request, response);
+            response.setContentType("application/json");
+            response.getWriter().write(new Gson().toJson(new DtoStatus(response.getStatus(), "Successful")));
+        } catch (ExceptionsParamenter e) {
+            response.setContentType("application/json");
+            response.setStatus(500);
+            response.getWriter().write(new Gson().toJson(new DtoStatus(response.getStatus(), e.getMessage())));
+        }
     }
 
 }

@@ -1,6 +1,7 @@
 package com.adobe.aem.guides.wknd.core.service;
 
 import com.adobe.aem.guides.wknd.core.dao.ClientDao;
+import com.adobe.aem.guides.wknd.core.exceptions.ExceptionsParamenter;
 import com.adobe.aem.guides.wknd.core.models.Client;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -28,7 +29,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id) throws ExceptionsParamenter {
         clientDao.delete(id);
     }
 }

@@ -18,7 +18,6 @@ package com.adobe.aem.guides.wknd.core.models;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 
-import java.util.LinkedList;
 import java.util.List;
 
 @Model(adaptables = Resource.class)
@@ -29,15 +28,14 @@ public class Invoice {
     private int idClient;
     private double value;
 
-    private List<Product>  productsBuy;
     public Invoice() {
     }
 
-    public Invoice(int number, int idClient, List<Product> productsBuy, double value) {
+
+    public Invoice(int number, int idProduct, int idClient) {
         this.number = number;
+        this.idProduct = idProduct;
         this.idClient = idClient;
-        this.productsBuy = productsBuy;
-        this.value = value;
     }
 
     public Invoice(int idProduct, int idClient) {
@@ -61,21 +59,12 @@ public class Invoice {
         return value;
     }
 
-    public Double sum(List<Product> productsBuy){
-        return productsBuy.stream()
-                          .mapToDouble(Product::getPrice)
-                          .sum();
-    }
-
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("NUMBER: " + number + "\n");
         sb.append("ID CLIENT: " + idClient +"\n");
-        for (Product product: productsBuy){
-            sb.append("ID PRODUCT: " + idProduct + "\n");
-        }
+        sb.append("ID PRODUCT: " + idProduct +"\n");
         sb.append("VALUE: " + value);
         return sb.toString();
     }

@@ -15,12 +15,16 @@
  */
 package com.adobe.aem.guides.wknd.core.servlets;
 
+import com.adobe.aem.guides.wknd.core.controller.InvoiceController;
+import com.adobe.aem.guides.wknd.core.exceptions.ExceptionsParamenter;
+import com.adobe.aem.guides.wknd.core.models.DtoStatus;
+import com.google.gson.Gson;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
-import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.propertytypes.ServiceDescription;
 
 import javax.servlet.Servlet;
@@ -28,7 +32,6 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 
 import static org.apache.sling.api.servlets.ServletResolverConstants.*;
-import static org.apache.sling.api.servlets.ServletResolverConstants.SLING_SERVLET_EXTENSIONS;
 
 /**
  * Servlet that writes some sample content into the response. It is mounted for
@@ -36,7 +39,7 @@ import static org.apache.sling.api.servlets.ServletResolverConstants.SLING_SERVL
  * {@link SlingSafeMethodsServlet} shall be used for HTTP methods that are
  * idempotent. For write operations use the {@link SlingAllMethodsServlet}.
  */
-@Component(service = { Servlet.class },property = {
+@Component(service = {Servlet.class}, property = {
         SLING_SERVLET_METHODS + "=" + "GET",
         SLING_SERVLET_METHODS + "=" + "POST",
         SLING_SERVLET_METHODS + "=" + "PUT",
@@ -47,34 +50,49 @@ import static org.apache.sling.api.servlets.ServletResolverConstants.SLING_SERVL
 @ServiceDescription("Simple Demo Servlet")
 public class ServletInvoice extends SlingAllMethodsServlet {
 
+    @Reference
+    InvoiceController invoiceController;
+
     private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(final SlingHttpServletRequest request, final SlingHttpServletResponse response) throws ServletException, IOException {
-        final Resource resource = request.getResource();
-        response.setContentType("application/json");
-        response.getWriter().write("Invoice GET");
+        try {
+            response.setContentType("application/json");
+            String getList = invoiceController.productBuy(request, response);
+            response.getWriter().write(getList);
+        } catch (ExceptionsParamenter e) {
+            response.setContentType("application/json");
+            response.setStatus(500);
+            response.getWriter().write(new Gson().toJson(new DtoStatus(response.getStatus(), e.getMessage())));
+        }
     }
 
     @Override
     protected void doPost(final SlingHttpServletRequest request, final SlingHttpServletResponse response) throws ServletException, IOException {
-        final Resource resource = request.getResource();
-        response.setContentType("application/json");
-        response.getWriter().write("Invoice POST");
-    }
+        try {
 
-    @Override
-    protected void doPut(final SlingHttpServletRequest request, final SlingHttpServletResponse response) throws ServletException, IOException {
-        final Resource resource = request.getResource();
-        response.setContentType("application/json");
-        response.getWriter().write("Invoice PUT");
+             invoiceController.resgitration(request, response);
+            response.setContentType("application/json");
+            response.getWriter().write(new Gson().toJson(new DtoStatus(response.getStatus(), "Successful")));
+        } catch (ExceptionsParamenter e) {
+            response.setContentType("application/json");
+            response.setStatus(500);
+            response.getWriter().write(new Gson().toJson(new DtoStatus(response.getStatus(), e.getMessage())));
+        }
+
     }
 
     @Override
     protected void doDelete(final SlingHttpServletRequest request, final SlingHttpServletResponse response) throws ServletException, IOException {
-        final Resource resource = request.getResource();
-        response.setContentType("application/json");
-        response.getWriter().write("Invoice DELETE");
+        try {
+            invoiceController.deleteProduct(request, response);
+            response.setContentType("application/json");
+            response.getWriter().write(new Gson().toJson(new DtoStatus(response.getStatus(), "Successful")));
+        } catch (ExceptionsParamenter e) {
+            response.setContentType("application/json");
+            response.setStatus(500);
+            response.getWriter().write(new Gson().toJson(new DtoStatus(response.getStatus(), e.getMessage())));
+        }
     }
-
 }

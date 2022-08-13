@@ -1,14 +1,12 @@
 package com.adobe.aem.guides.wknd.core.dao;
 
+import com.adobe.aem.guides.wknd.core.exceptions.ExceptionsParamenter;
 import com.adobe.aem.guides.wknd.core.models.Product;
 import com.adobe.aem.guides.wknd.core.service.DatabaseService;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -135,13 +133,15 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id) throws ExceptionsParamenter {
         try (Connection connection = databaseService.getConnection()) {
             String query = "DELETE FROM PRODUCT WHERE ID = ?";
             try (PreparedStatement ps = connection.prepareStatement(query)) {
                 ps.setInt(1,id);
                 ps.execute();
             }
+        } catch (SQLIntegrityConstraintViolationException ex) {
+            throw new ExceptionsParamenter("ID Product foreign key in Invoice");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

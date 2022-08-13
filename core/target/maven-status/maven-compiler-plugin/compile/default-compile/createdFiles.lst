@@ -1,5 +1,7 @@
 com\adobe\aem\guides\wknd\core\models\Client.class
+com\adobe\aem\guides\wknd\core\service\InvoiceService.class
 com\adobe\aem\guides\wknd\core\servlets\ClientServlet.class
+com\adobe\aem\guides\wknd\core\models\Dto.class
 com\adobe\aem\guides\wknd\core\schedulers\SimpleScheduledTask$Config.class
 com\adobe\aem\guides\wknd\core\service\ClientServiceImpl.class
 com\adobe\aem\guides\wknd\core\dao\InvoiceDaoImpl.class
@@ -8,14 +10,18 @@ com\adobe\aem\guides\wknd\core\dao\ClientDao.class
 com\adobe\aem\guides\wknd\core\models\HelloWorldModel.class
 com\adobe\aem\guides\wknd\core\servlets\ServletProduct.class
 com\adobe\aem\guides\wknd\core\service\ClientService.class
+com\adobe\aem\guides\wknd\core\exceptions\ExceptionsParamenter.class
 com\adobe\aem\guides\wknd\core\schedulers\SimpleScheduledTask.class
 com\adobe\aem\guides\wknd\core\models\Invoice.class
+com\adobe\aem\guides\wknd\core\models\DtoStatus.class
 com\adobe\aem\guides\wknd\core\dao\InvoiceDao.class
 com\adobe\aem\guides\wknd\core\dao\ProductDao.class
 com\adobe\aem\guides\wknd\core\filters\LoggingFilter.class
 com\adobe\aem\guides\wknd\core\service\DatabaseService.class
 com\adobe\aem\guides\wknd\core\controller\ProductController.class
+com\adobe\aem\guides\wknd\core\controller\InvoiceControllerImpl.class
 com\adobe\aem\guides\wknd\core\service\ProductServiceImpl.class
+com\adobe\aem\guides\wknd\core\controller\InvoiceController.class
 com\adobe\aem\guides\wknd\core\service\ProductService.class
 com\adobe\aem\guides\wknd\core\controller\ProductControllerImpl.class
 com\adobe\aem\guides\wknd\core\dao\ProductDaoImpl.class
@@ -23,7 +29,7 @@ com\adobe\aem\guides\wknd\core\controller\ClientControllerImpl.class
 com\adobe\aem\guides\wknd\core\service\DatabaseServiceImpl.class
 com\adobe\aem\guides\wknd\core\controller\ClientController.class
 com\adobe\aem\guides\wknd\core\servlets\SimpleServlet.class
-com\adobe\aem\guides\wknd\core\exceptions\ExceptionsJson.class
+com\adobe\aem\guides\wknd\core\service\InvoiceServiceImpl.class
 com\adobe\aem\guides\wknd\core\servlets\ServletInvoice.class
 com\adobe\aem\guides\wknd\core\listeners\SimpleResourceListener.class
 com\adobe\aem\guides\wknd\core\models\Product.class

@@ -1,6 +1,7 @@
 package com.adobe.aem.guides.wknd.core.service;
 
 import com.adobe.aem.guides.wknd.core.dao.ProductDao;
+import com.adobe.aem.guides.wknd.core.exceptions.ExceptionsParamenter;
 import com.adobe.aem.guides.wknd.core.models.Client;
 import com.adobe.aem.guides.wknd.core.models.Product;
 import com.google.gson.Gson;
@@ -53,7 +54,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id) throws ExceptionsParamenter {
         productDao.delete(id);
 
     }

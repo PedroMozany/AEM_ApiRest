@@ -1,5 +1,6 @@
 package com.adobe.aem.guides.wknd.core.dao;
 
+import com.adobe.aem.guides.wknd.core.exceptions.ExceptionsParamenter;
 import com.adobe.aem.guides.wknd.core.models.Product;
 
 import java.util.List;
@@ -11,5 +12,5 @@ public interface ProductDao {
     List<Product> ListCategory(String category);
     void save(Product product);
     void update(Product product);
-    void delete(int id);
+    void delete(int id) throws ExceptionsParamenter;
 }

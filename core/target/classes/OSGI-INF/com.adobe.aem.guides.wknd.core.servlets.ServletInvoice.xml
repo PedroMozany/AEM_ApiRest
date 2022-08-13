@@ -11,5 +11,6 @@ json</property>
   <service>
     <provide interface="javax.servlet.Servlet"/>
   </service>
+  <reference name="invoiceController" interface="com.adobe.aem.guides.wknd.core.controller.InvoiceController" field="invoiceController"/>
   <implementation class="com.adobe.aem.guides.wknd.core.servlets.ServletInvoice"/>
 </scr:component>

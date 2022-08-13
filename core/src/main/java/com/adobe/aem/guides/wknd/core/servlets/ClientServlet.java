@@ -16,8 +16,9 @@
 package com.adobe.aem.guides.wknd.core.servlets;
 
 import com.adobe.aem.guides.wknd.core.controller.ClientController;
-import com.adobe.aem.guides.wknd.core.exceptions.ExceptionsJson;
-import com.adobe.aem.guides.wknd.core.models.Client;
+import com.adobe.aem.guides.wknd.core.exceptions.ExceptionsParamenter;
+import com.adobe.aem.guides.wknd.core.models.DtoStatus;
+import com.google.gson.Gson;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
@@ -38,7 +39,7 @@ import static org.apache.sling.api.servlets.ServletResolverConstants.*;
  * {@link SlingSafeMethodsServlet} shall be used for HTTP methods that are
  * idempotent. For write operations use the {@link SlingAllMethodsServlet}.
  */
-@Component(service = { Servlet.class }, property = {
+@Component(service = {Servlet.class}, property = {
         SLING_SERVLET_METHODS + "=" + "GET",
         SLING_SERVLET_METHODS + "=" + "POST",
         SLING_SERVLET_METHODS + "=" + "PUT",
@@ -56,22 +57,53 @@ public class ClientServlet extends SlingAllMethodsServlet {
 
     @Override
     protected void doGet(final SlingHttpServletRequest req, final SlingHttpServletResponse resp) throws ServletException, IOException {
-        String client = clientController.search(req,resp);
-        resp.setContentType("application/json");
-        resp.getWriter().write(client);
+        try {
+            String client = clientController.search(req, resp);
+            resp.setContentType("application/json");
+            resp.getWriter().write(client);
+        } catch (ExceptionsParamenter e) {
+            resp.setContentType("application/json");
+            resp.setStatus(500);
+            resp.getWriter().write(new Gson().toJson(new DtoStatus(resp.getStatus(), e.getMessage())));
+        }
     }
+
     @Override
     protected void doPost(final SlingHttpServletRequest req, final SlingHttpServletResponse resp) throws ServletException, IOException {
-        String client = clientController.save(req,resp);
-        resp.setContentType("application/json");
-        resp.getWriter().write(client);
+        try {
+            clientController.save(req, resp);
+            resp.setContentType("application/json");
+            resp.getWriter().write(new Gson().toJson(new DtoStatus(resp.getStatus(), "Successful")));
+        } catch (ExceptionsParamenter e) {
+            resp.setContentType("application/json");
+            resp.setStatus(500);
+            resp.getWriter().write(new Gson().toJson(new DtoStatus(resp.getStatus(), e.getMessage())));
+        }
     }
+
     @Override
     protected void doPut(final SlingHttpServletRequest req, final SlingHttpServletResponse resp) throws ServletException, IOException {
-        clientController.update(req,resp);
+        try {
+            clientController.update(req, resp);
+            resp.setContentType("application/json");
+            resp.getWriter().write(new Gson().toJson(new DtoStatus(resp.getStatus(), "Successful")));
+        } catch (ExceptionsParamenter e) {
+            resp.setContentType("application/json");
+            resp.setStatus(500);
+            resp.getWriter().write(new Gson().toJson(new DtoStatus(resp.getStatus(), e.getMessage())));
+        }
     }
+
     @Override
     protected void doDelete(final SlingHttpServletRequest req, final SlingHttpServletResponse resp) throws ServletException, IOException {
-        clientController.delete(req,resp);;
+        try {
+            clientController.delete(req, resp);
+            resp.setContentType("application/json");
+            resp.getWriter().write(new Gson().toJson(new DtoStatus(resp.getStatus(), "Successful")));
+        } catch (ExceptionsParamenter e) {
+            resp.setContentType("application/json");
+            resp.setStatus(500);
+            resp.getWriter().write(new Gson().toJson(new DtoStatus(resp.getStatus(), e.getMessage())));
+        }
     }
 }
