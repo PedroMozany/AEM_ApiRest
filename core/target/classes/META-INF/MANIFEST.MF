@@ -47,16 +47,18 @@ Provide-Capability: osgi.service;objectClass:List<String>="com.adobe.a
  m.guides.wknd.core.service",osgi.service;objectClass:List<String>="co
  m.adobe.aem.guides.wknd.core.service.DatabaseService";uses:="com.adob
  e.aem.guides.wknd.core.service",osgi.service;objectClass:List<String>
- ="com.adobe.aem.guides.wknd.core.service.InvoiceService";uses:="com.a
+ ="com.adobe.aem.guides.wknd.core.service.FilePdfService";uses:="com.a
  dobe.aem.guides.wknd.core.service",osgi.service;objectClass:List<Stri
- ng>="com.adobe.aem.guides.wknd.core.service.ProductService";uses:="co
+ ng>="com.adobe.aem.guides.wknd.core.service.InvoiceService";uses:="co
  m.adobe.aem.guides.wknd.core.service",osgi.service;objectClass:List<S
- tring>="java.lang.Exception",osgi.service;objectClass:List<String>="j
- ava.lang.Runnable",osgi.service;objectClass:List<String>="javax.servl
- et.Filter";uses:="javax.servlet",osgi.service;objectClass:List<String
- >="javax.servlet.Servlet";uses:="javax.servlet",osgi.service;objectCl
- ass:List<String>="org.apache.sling.api.resource.observation.ResourceC
- hangeListener";uses:="org.apache.sling.api.resource.observation"
+ tring>="com.adobe.aem.guides.wknd.core.service.ProductService";uses:=
+ "com.adobe.aem.guides.wknd.core.service",osgi.service;objectClass:Lis
+ t<String>="java.lang.Exception",osgi.service;objectClass:List<String>
+ ="java.lang.Runnable",osgi.service;objectClass:List<String>="javax.se
+ rvlet.Filter";uses:="javax.servlet",osgi.service;objectClass:List<Str
+ ing>="javax.servlet.Servlet";uses:="javax.servlet",osgi.service;objec
+ tClass:List<String>="org.apache.sling.api.resource.observation.Resour
+ ceChangeListener";uses:="org.apache.sling.api.resource.observation"
 Require-Capability: osgi.service;filter:="(objectClass=com.adobe.aem.g
  uides.wknd.core.controller.ClientController)";effective:=active,osgi.
  service;filter:="(objectClass=com.adobe.aem.guides.wknd.core.controll
@@ -90,12 +92,13 @@ Service-Component: OSGI-INF/com.adobe.aem.guides.wknd.core.controller.
  core.schedulers.SimpleScheduledTask.xml,OSGI-INF/com.adobe.aem.guides
  .wknd.core.service.ClientServiceImpl.xml,OSGI-INF/com.adobe.aem.guide
  s.wknd.core.service.DatabaseServiceImpl.xml,OSGI-INF/com.adobe.aem.gu
- ides.wknd.core.service.InvoiceServiceImpl.xml,OSGI-INF/com.adobe.aem.
- guides.wknd.core.service.ProductServiceImpl.xml,OSGI-INF/com.adobe.ae
- m.guides.wknd.core.servlets.ClientServlet.xml,OSGI-INF/com.adobe.aem.
- guides.wknd.core.servlets.ServletInvoice.xml,OSGI-INF/com.adobe.aem.g
- uides.wknd.core.servlets.ServletProduct.xml,OSGI-INF/com.adobe.aem.gu
- ides.wknd.core.servlets.SimpleServlet.xml
+ ides.wknd.core.service.FilePdfServiceImpl.xml,OSGI-INF/com.adobe.aem.
+ guides.wknd.core.service.InvoiceServiceImpl.xml,OSGI-INF/com.adobe.ae
+ m.guides.wknd.core.service.ProductServiceImpl.xml,OSGI-INF/com.adobe.
+ aem.guides.wknd.core.servlets.ClientServlet.xml,OSGI-INF/com.adobe.ae
+ m.guides.wknd.core.servlets.ServletInvoice.xml,OSGI-INF/com.adobe.aem
+ .guides.wknd.core.servlets.ServletProduct.xml,OSGI-INF/com.adobe.aem.
+ guides.wknd.core.servlets.SimpleServlet.xml
 Sling-Model-Classes: com.adobe.aem.guides.wknd.core.models.Client,com.
  adobe.aem.guides.wknd.core.models.HelloWorldModel,com.adobe.aem.guide
  s.wknd.core.models.Invoice,com.adobe.aem.guides.wknd.core.models.Prod

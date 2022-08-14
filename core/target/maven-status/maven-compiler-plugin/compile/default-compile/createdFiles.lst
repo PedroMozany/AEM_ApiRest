@@ -27,6 +27,8 @@ com\adobe\aem\guides\wknd\core\controller\ProductControllerImpl.class
 com\adobe\aem\guides\wknd\core\dao\ProductDaoImpl.class
 com\adobe\aem\guides\wknd\core\controller\ClientControllerImpl.class
 com\adobe\aem\guides\wknd\core\service\DatabaseServiceImpl.class
+com\adobe\aem\guides\wknd\core\service\FilePdfServiceImpl.class
+com\adobe\aem\guides\wknd\core\service\FilePdfService.class
 com\adobe\aem\guides\wknd\core\controller\ClientController.class
 com\adobe\aem\guides\wknd\core\servlets\SimpleServlet.class
 com\adobe\aem\guides\wknd\core\service\InvoiceServiceImpl.class

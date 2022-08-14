@@ -1,8 +1,6 @@
 package com.adobe.aem.guides.wknd.core.controller;
 
 import com.adobe.aem.guides.wknd.core.exceptions.ExceptionsParamenter;
-import com.adobe.aem.guides.wknd.core.models.Client;
-import com.adobe.aem.guides.wknd.core.models.Invoice;
 import com.adobe.aem.guides.wknd.core.models.Product;
 import com.adobe.aem.guides.wknd.core.service.ProductService;
 import com.google.gson.*;
@@ -11,7 +9,6 @@ import org.apache.sling.api.SlingHttpServletResponse;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
-import java.io.IOException;
 import java.util.List;
 
 @Component(immediate = true, service = ProductController.class)

@@ -18,6 +18,7 @@ package com.adobe.aem.guides.wknd.core.servlets;
 import com.adobe.aem.guides.wknd.core.controller.InvoiceController;
 import com.adobe.aem.guides.wknd.core.exceptions.ExceptionsParamenter;
 import com.adobe.aem.guides.wknd.core.models.DtoStatus;
+import com.adobe.xfa.Document;
 import com.google.gson.Gson;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -26,6 +27,8 @@ import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.propertytypes.ServiceDescription;
+
+
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
@@ -71,7 +74,6 @@ public class ServletInvoice extends SlingAllMethodsServlet {
     @Override
     protected void doPost(final SlingHttpServletRequest request, final SlingHttpServletResponse response) throws ServletException, IOException {
         try {
-
              invoiceController.resgitration(request, response);
             response.setContentType("application/json");
             response.getWriter().write(new Gson().toJson(new DtoStatus(response.getStatus(), "Successful")));
