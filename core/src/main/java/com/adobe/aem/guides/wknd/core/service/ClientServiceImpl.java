@@ -1,6 +1,7 @@
 package com.adobe.aem.guides.wknd.core.service;
 
 import com.adobe.aem.guides.wknd.core.dao.ClientDao;
+import com.adobe.aem.guides.wknd.core.dao.ClientDaoImpl;
 import com.adobe.aem.guides.wknd.core.exceptions.ExceptionsParamenter;
 import com.adobe.aem.guides.wknd.core.models.Client;
 import org.osgi.service.component.annotations.Component;
@@ -14,6 +15,11 @@ public class ClientServiceImpl implements ClientService {
     ClientDao clientDao;
 
     @Override
+    public Client authentication(int id, String name) throws ExceptionsParamenter {
+        return clientDao.authentication(id,name);
+    }
+
+    @Override
     public Client save(Client client) {
         return clientDao.save(client);
     }
@@ -22,6 +28,7 @@ public class ClientServiceImpl implements ClientService {
     public Client search(int id) {
         return clientDao.search(id);
     }
+
 
     @Override
     public void update(Client client) {

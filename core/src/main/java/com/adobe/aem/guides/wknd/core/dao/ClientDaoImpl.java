@@ -3,6 +3,7 @@ package com.adobe.aem.guides.wknd.core.dao;
 import com.adobe.aem.guides.wknd.core.exceptions.ExceptionsParamenter;
 import com.adobe.aem.guides.wknd.core.models.Client;
 import com.adobe.aem.guides.wknd.core.service.DatabaseService;
+import com.adobe.aem.guides.wknd.core.service.DatabaseServiceImpl;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
@@ -56,6 +57,33 @@ public class ClientDaoImpl implements ClientDao {
         }
 
     }
+
+
+    @Override
+    public Client authentication(int id, String name) throws ExceptionsParamenter {
+        Client result;
+        try (Connection connection = databaseService.getConnection()) {
+            String query = "SELECT * FROM CLIENT WHERE ID = ? AND NAME = ?";
+            try (PreparedStatement ps = connection.prepareStatement(query)) {
+                ps.setInt(1, id);
+                ps.setString(2,name);
+                ps.execute();
+                try (ResultSet rs = ps.getResultSet()) {
+                    if (rs.next()) {
+                        return new Client(rs.getInt(1),rs.getString(2));
+                    }
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }catch (NullPointerException nex){
+            throw new ExceptionsParamenter("Please check the parameters");
+        }
+
+    }
+
+
 
     @Override
     public void update(Client client) {

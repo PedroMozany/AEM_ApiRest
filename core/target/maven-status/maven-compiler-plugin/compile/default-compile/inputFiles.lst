@@ -28,11 +28,10 @@ D:\WS_intelliJ\AEM\aem-guides-wknd\core\src\main\java\com\adobe\aem\guides\wknd\
 D:\WS_intelliJ\AEM\aem-guides-wknd\core\src\main\java\com\adobe\aem\guides\wknd\core\models\Client.java
 D:\WS_intelliJ\AEM\aem-guides-wknd\core\src\main\java\com\adobe\aem\guides\wknd\core\servlets\ClientServlet.java
 D:\WS_intelliJ\AEM\aem-guides-wknd\core\src\main\java\com\adobe\aem\guides\wknd\core\controller\ProductController.java
-D:\WS_intelliJ\AEM\aem-guides-wknd\core\src\main\java\com\adobe\aem\guides\wknd\core\service\FilePdfServiceImpl.java
 D:\WS_intelliJ\AEM\aem-guides-wknd\core\src\main\java\com\adobe\aem\guides\wknd\core\service\ProductServiceImpl.java
 D:\WS_intelliJ\AEM\aem-guides-wknd\core\src\main\java\com\adobe\aem\guides\wknd\core\models\Product.java
 D:\WS_intelliJ\AEM\aem-guides-wknd\core\src\main\java\com\adobe\aem\guides\wknd\core\controller\InvoiceControllerImpl.java
-D:\WS_intelliJ\AEM\aem-guides-wknd\core\src\main\java\com\adobe\aem\guides\wknd\core\service\FilePdfService.java
+D:\WS_intelliJ\AEM\aem-guides-wknd\core\src\main\java\com\adobe\aem\guides\wknd\core\filters\AuthentcationFilter.java
 D:\WS_intelliJ\AEM\aem-guides-wknd\core\src\main\java\com\adobe\aem\guides\wknd\core\service\InvoiceServiceImpl.java
 D:\WS_intelliJ\AEM\aem-guides-wknd\core\src\main\java\com\adobe\aem\guides\wknd\core\exceptions\ExceptionsParamenter.java
 D:\WS_intelliJ\AEM\aem-guides-wknd\core\src\main\java\com\adobe\aem\guides\wknd\core\controller\ProductControllerImpl.java
