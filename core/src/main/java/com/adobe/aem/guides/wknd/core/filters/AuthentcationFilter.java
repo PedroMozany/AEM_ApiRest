@@ -82,12 +82,12 @@ public class AuthentcationFilter implements Filter {
             }else{
                 response.setContentType("application/json");
                 resp.setStatus(500);
-                response.getWriter().write(new Gson().toJson(new DtoStatus(resp.getStatus(),"Please check the parameters")));
+                response.getWriter().write(new Gson().toJson(new DtoStatus(resp.getStatus(),"Please check the parameters Authentication")));
             }
         } catch (NullPointerException e) {
             response.setContentType("application/json");
             resp.setStatus(500);
-            response.getWriter().write(new Gson().toJson(new DtoStatus(resp.getStatus(),"Please check the parameters")));
+            response.getWriter().write(new Gson().toJson(new DtoStatus(resp.getStatus(),"Please check the parameters Authentication")));
         }
     }
 

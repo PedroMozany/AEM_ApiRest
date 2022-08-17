@@ -119,7 +119,7 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public void update(Product product) {
         try (Connection connection = databaseService.getConnection()) {
-            String query = "UPDATE PRODUCT SET NAME_PRODUCT = ?, ATEGORY = ?, PRICE = ? WHERE ID = ?";
+            String query = "UPDATE PRODUCT SET NAME_PRODUCT = ?, CATEGORY = ?, PRICE = ? WHERE ID = ?";
             try (PreparedStatement ps = connection.prepareStatement(query)) {
                 ps.setString(1,product.getNameProduct());
                 ps.setString(2, product.getCategory());

@@ -3,9 +3,9 @@ package com.adobe.aem.guides.wknd.core.dao;
 import com.adobe.aem.guides.wknd.core.models.Client;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import junit.framework.Assert;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
+import org.testng.annotations.Test;
 
 @ExtendWith(AemContextExtension.class)
 public class ClientDaoTest {

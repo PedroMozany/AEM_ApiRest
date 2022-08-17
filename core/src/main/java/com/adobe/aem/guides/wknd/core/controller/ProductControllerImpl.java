@@ -95,7 +95,7 @@ public class ProductControllerImpl implements ProductController {
                 JsonObject object = jarray.get(i).getAsJsonObject();
                 String nameProduct = object.get("nameProduct").getAsString();
                 String category = object.get("category").getAsString();
-                String price = object.get("price").getAsString();
+                String price = object.get("price").getAsString().replace(",",".");
                 String id = object.get("id").getAsString();
                 productService.update(new Product(Integer.parseInt(id), nameProduct, category, Double.parseDouble(price)));
             }
